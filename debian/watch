@@ -1,0 +1,10 @@
+version=3
+# opts="versionmangle=s/-(\d{4})-(\d{2})-(\d{2})/.$1$2$3/" \
+# We want to unmangle Debian revision so we actually obtain
+# original tarball as it is named upstream to include proper
+# name/url/shasum into postinst script
+opts="dversionmangle=s/\.(\d{4})(\d{2})(\d{2})/-$1-$2-$3/" \
+  http://www.nitrc.org/frs/?group_id=558 \
+  .*/download\.php/.*/solar[_-]([0-9.-]*).tar.gz 
+ 
+# debian debian/update.sh

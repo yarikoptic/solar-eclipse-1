@@ -1,0 +1,5 @@
+solar (8.1.1-1) UNRELEASED; urgency=low
+
+  * Initial release (Closes: #nnnn)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 08 Feb 2016 13:35:07 -0500

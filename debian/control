@@ -1,0 +1,26 @@
+Source: solar
+Section: science
+Priority: optional
+Maintainer: Yaroslav Halchenko <debian@onerussian.com>
+Build-Depends: debhelper (>= 9),
+ libnifti-dev,
+ libeigen3-dev,
+Standards-Version: 3.9.6
+Homepage: http://solar-eclipse-genetics.org/
+#Vcs-Git: git://anonscm.debian.org/collab-maint/solar.git
+#Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/solar.git;a=summary
+
+Package: solar
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: genetic variance components analysis software
+ SOLAR-Eclipse is an extensive, flexible software package for genetic
+ variance components analysis, including linkage analysis, quantitative genetic
+ analysis, SNP association analysis (QTN and QTLD), and covariate screening.
+ Operations are included for calculation of marker-specific or multipoint
+ identity-by-descent (IBD) matrices in pedigrees of arbitrary size and
+ complexity, and for linkage analysis of multiple quantitative traits and/or
+ discrete traits which may involve multiple loci (oligogenic analysis),
+ dominance effects, household effects, and interactions. Additional features
+ include functionality for mega and meta-genetic analyses where data from
+ diverse cohorts can be pooled to improve statistical significance.

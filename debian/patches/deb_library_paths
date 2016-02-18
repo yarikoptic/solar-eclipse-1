@@ -1,0 +1,11 @@
+--- a/src/Makefile.dynamic
++++ b/src/Makefile.dynamic
+@@ -9,7 +9,7 @@ CXX=g++
+ FFLAGS = -m64 -O2 -fno-second-underscore -fexceptions
+ CFLAGS = -m64 -O2 -I../lib -DUSE_SAFELIB -fexceptions
+ LDFLAGS = -m64 -L../lib -lsafe -ltcl8.4 -L/usr/lib32 -lm -lc -lstdc++ -ldl -fexceptions -lRicVolume -lNemaVolume -lfslio -lniftiio -lnifticdf -lznz -lz
+-CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1
++CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 -I/usr/include/eigen3/
+ CXXFLAGS = -O2
+ 
+ # End of system specific definitions
