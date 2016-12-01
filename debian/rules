@@ -26,18 +26,12 @@ override_dh_auto_clean:
 
 override_dh_install:
 	dh_install
-	install -t debian/solar/usr/bin/ debian/source/files/solar
-	SOLAR_DIR=$(CURDIR)/debian/solar/usr/lib/solar PATH=$(CURDIR)/debian/solar/usr/bin:$$PATH\
+	install -t debian/solar-eclipse/usr/bin/ debian/source/files/solar
+	SOLAR_DIR=$(CURDIR)/debian/solar-eclipse/usr/lib/solar-eclipse PATH=$(CURDIR)/debian/solar-eclipse/usr/bin:$$PATH\
 		make test
 
 override_dh_auto_test:
 	: # testing will be done later after installation
-
-# dh_make generated override targets
-# This is example for Cmake (See https://bugs.debian.org/641051 )
-#override_dh_auto_configure:
-#	dh_auto_configure -- \
-#	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
 
 
 

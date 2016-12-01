@@ -9,7 +9,7 @@
 +++ b/Makefile
 @@ -0,0 +1,35 @@
 +ARCHMAKEFILE=Makefile.d64
-+INSTALLDIR=/usr/lib/solar
++INSTALLDIR=/usr/lib/solar-eclipse
 +LIBSRCDIRS=lib extras/RicVolume/src extras/NemaVolume/src
 +BINSRCDIRS=ibd-src src extras/homo
 +
@@ -23,12 +23,12 @@
 +
 +# Ultimate install rule which would respect DESTDIR
 +install: build
-+	install -d $(DESTDIR)/usr/lib/solar/bin $(DESTDIR)/usr/lib/solar/lib $(DESTDIR)/usr/lib/solar/doc/
++	install -d $(DESTDIR)/usr/lib/solar-eclipse/bin $(DESTDIR)/usr/lib/solar-eclipse/lib $(DESTDIR)/usr/lib/solar-eclipse/doc/
 +	set -e; for d in $(BINSRCDIRS); do make -C $$d install; done
-+	install -m 0644 -t $(DESTDIR)/usr/lib/solar/lib/  lib/solar.tcl
-+	cd $(DESTDIR)/usr/lib/solar/lib; echo 'auto_mkindex . solar.tcl' | tclsh8.5
-+	install -t $(DESTDIR)/usr/lib/solar/bin extras/stringplotk extras/arrangeps.py
-+	cp -rp  debian/source/files/Example $(DESTDIR)/usr/lib/solar/doc
++	install -m 0644 -t $(DESTDIR)/usr/lib/solar-eclipse/lib/  lib/solar.tcl
++	cd $(DESTDIR)/usr/lib/solar-eclipse/lib; echo 'auto_mkindex . solar.tcl' | tclsh8.5
++	install -t $(DESTDIR)/usr/lib/solar-eclipse/bin extras/stringplotk extras/arrangeps.py
++	cp -rp  debian/source/files/Example $(DESTDIR)/usr/lib/solar-eclipse/doc
 +
 +clean:
 +	-find -iname *.a -delete
@@ -50,7 +50,7 @@
  $(OBJS): 	$(HEADERS)
  
 +install:
-+		install -t $(DESTDIR)/usr/lib/solar/bin $(PROGRAM)
++		install -t $(DESTDIR)/usr/lib/solar-eclipse/bin $(PROGRAM)
 +
  clean:
  		rm -f $(OBJS)

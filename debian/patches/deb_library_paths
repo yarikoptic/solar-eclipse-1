@@ -73,7 +73,7 @@
  
  install:
 -	/usr/sbin/install -f ../bin -o solarmain
-+	install -t $(DESTDIR)/usr/lib/solar/bin solarmain
++	install -t $(DESTDIR)/usr/lib/solar-eclipse/bin solarmain
  
  
  ecalc:	ecalc.o expression.o token.o scan.o function.o
@@ -84,7 +84,7 @@
  SUNMATH =
  INSTALLER = cp
 -INSTALLER2 = ../bin
-+INSTALLER2 = $(DESTDIR)/usr/lib/solar/bin
++INSTALLER2 = $(DESTDIR)/usr/lib/solar-eclipse/bin
  
  ibdprep: ibdprep.o
  	$(CC) $(LDFLAGS) -o ibdprep ibdprep.o -L../lib -lsafe -lm

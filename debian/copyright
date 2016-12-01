@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: solar
-Source: http://github.com/scicubator/solar-eclipse
+Upstream-Name: solar-eclipse
+Source: http://github.com/syumprc/solar-eclipse
 
 Files: *
 Copyright: ???-2016, Peter Kochunov

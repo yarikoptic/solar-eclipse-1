@@ -1,7 +1,5 @@
 upstream
 
-   - solar or solar-eclipse -- what would be a preferable name to call
-     the package?
    - do nifticdf and fslio needed??? I see binding but do not see
      headers included etc.  fslio is a tricky one since copy within
      nifticlib was never updated, and the one coming from FSL is under

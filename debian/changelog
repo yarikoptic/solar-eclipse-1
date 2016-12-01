@@ -1,5 +1,5 @@
-solar (8.1.1+git0-g8f32b4b-1) neurodebian; urgency=low
+solar-eclipse (8.1.1+git0-g8f32b4b-1) neurodebian; urgency=low
 
   * Initial test release within NeuroDebian repository, no active ITP
 
- -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 30 Nov 2016 23:46:41 -0500
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 01 Dec 2016 09:09:15 -0500

@@ -1,4 +1,4 @@
-Source: solar
+Source: solar-eclipse
 Section: science
 Priority: optional
 Maintainer: Yaroslav Halchenko <debian@onerussian.com>
@@ -12,10 +12,10 @@ Build-Depends:
  fsl-5.0-core,
 Standards-Version: 3.9.6
 Homepage: http://solar-eclipse-genetics.org/
-#Vcs-Git: git://anonscm.debian.org/collab-maint/solar.git
-#Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/solar.git;a=summary
+#Vcs-Git: git://anonscm.debian.org/collab-maint/solar-eclipse.git
+#Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/solar-eclipse.git;a=summary
 
-Package: solar
+Package: solar-eclipse
 Architecture: any
 Depends:
  ${shlibs:Depends}, ${misc:Depends},

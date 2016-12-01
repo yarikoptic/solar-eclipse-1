@@ -1,36 +1,25 @@
 #!/bin/bash
 
-: ${SOLAR_DIR:=/usr/lib/solar}
+set -eu
 
-if [ "$SOLAR_BIN" = "" ]
+: ${SOLAR_DIR:=/usr/lib/solar-eclipse}
+
+if [ "${SOLAR_BIN:-}" = "" ]
 then
     export SOLAR_BIN=${SOLAR_DIR}/bin
 fi
 
-if [ -z "$SOLAR_LIB" ]
+if [ -z "${SOLAR_LIB:-}" ]
 then
     export SOLAR_LIB=${SOLAR_DIR}/lib
 fi
 
 export PATH=$SOLAR_BIN:$PATH
-#LD_LIBRARY_PATH=$SOLAR_LIB:$LD_LIBRARY_PATH
-#TCL_LIBRARY=$SOLAR_LIB/tcl8.0.5
-#TK_LIBRARY=$SOLAR_LIB/tk8.0.5
-#TCL_LIBRARY=$SOLAR_LIB/tcl8.4
-#TK_LIBRARY=$SOLAR_LIB/tk8.4
-
 export SOLAR_PROGRAM_NAME=$0
-#export SOLAR_BIN
-#export SOLAR_LIB
-#export PATH
-#export LD_LIBRARY_PATH
-#export TCL_LIBRARY
-#export TK_LIBRARY
-#export SOLAR_PROGRAM_NAME
 
-if [ ! -s $SOLAR_BIN/solarmain ]
+if [ ! -s "$SOLAR_BIN/solarmain" ]
 then
     echo "The directory $SOLAR_BIN contains no solarmain executable"
 else
-    $SOLAR_BIN/solarmain "$@"
+    "$SOLAR_BIN/solarmain" "$@"
 fi
