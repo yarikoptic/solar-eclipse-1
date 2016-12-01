@@ -1,0 +1,21 @@
+--- /dev/null
++++ b/src/Makefile.common
+@@ -0,0 +1 @@
++EXTRACINCLUDES = -I../extras/RicVolume/src/ -I../extras/include
+--- a/src/Makefile.d64
++++ b/src/Makefile.d64
+@@ -1,3 +1,5 @@
++include ./Makefile.common
++
+ all:	solarmain
+ 
+ # gcc linux
+@@ -9,7 +11,7 @@ CXX=g++
+ FFLAGS = -m64 -O2 -fno-second-underscore -fexceptions
+ CFLAGS = -m64 -O2 -I../lib -DUSE_SAFELIB -fexceptions
+ LDFLAGS = -m64 -L../lib -lsafe -ltcl8.4 -L/usr/lib32 -lm -lc -lstdc++ -ldl -fexceptions -lRicVolume -lNemaVolume -lfslio -lniftiio -lnifticdf -lznz -lz
+-CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 -DLINUX64
++CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 -DLINUX64 $(EXTRACINCLUDES)
+ CXXFLAGS = -O2
+ 
+ # End of system specific definitions
