@@ -1,4 +1,4 @@
-solar (8.1.1-1) UNRELEASED; urgency=low
+solar (8.1.1+git0-g8f32b4b-1) UNRELEASED; urgency=low
 
   * Initial release (Closes: #nnnn)
 
