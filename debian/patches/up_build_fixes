@@ -7,7 +7,7 @@
 +TCLLIBS = -ltcl8.5
 --- /dev/null
 +++ b/Makefile
-@@ -0,0 +1,29 @@
+@@ -0,0 +1,30 @@
 +ARCHMAKEFILE=Makefile.d64
 +INSTALLDIR=/usr/lib/solar
 +LIBSRCDIRS=lib extras/RicVolume/src extras/NemaVolume/src
@@ -23,11 +23,12 @@
 +
 +# Ultimate install rule which would respect DESTDIR
 +install: build
-+	install -d $(DESTDIR)/bin $(DESTDIR)/lib
++	install -d $(DESTDIR)/bin $(DESTDIR)/lib $(DESTDIR)/doc/
 +	set -e; for d in $(BINSRCDIRS); do make -C $$d install; done
 +	install -m 0644 -t $(DESTDIR)/lib/  lib/solar.tcl
 +	cd $(DESTDIR)/lib; echo 'auto_mkindex . solar.tcl' | tclsh8.5
 +	install -t $(DESTDIR)/bin extras/stringplotk extras/arrangeps.py
++	cp -rp  debian/source/files/Example $(DESTDIR)/doc
 +
 +clean:
 +	-find -iname *.a -delete

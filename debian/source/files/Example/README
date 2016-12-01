@@ -1,0 +1,15 @@
+This example files were copied from "binary distribution" of solar as of 201607
+
+            gaw10.ped  ..........  pedigree file
+            gaw10.phen  .........  phenotypes file
+            mrk9  ...............  marker file for chromosome 9
+            mrk10  ..............  marker file for chromosome 10
+            map9  ...............  map file for chromosome 9
+            map10  ..............  map file for chromosome 10
+            makemibd.tcl  .......  script to make IBD and MIBD files
+            doanalysis.tcl  .....  script to do quantitative genetic,
+                                     twopoint, and multipoint analyses
+
+The example data here are simulated data from Genetic Analysis Workshop 10
+(GAW10). GAW10 was supported in part by grant GM31575 from the National
+Institutes of Health. Used by permission.
