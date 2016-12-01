@@ -1,15 +1,33 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: solar
-Source: http://www.nitrc.org/frs/?group_id=558
+Source: http://github.com/scicubator/solar-eclipse
 
 Files: *
-Copyright: <years> <put author's name and email here>
-           <years> <likewise for another author>
+Copyright: ???-2016, Peter Kochunov
 License: GPL-3.0+
 
-Files: debian/*
-Copyright: 2016 Yaroslav Halchenko <debian@onerussian.com>
-License: GPL-3.0+
+Files: src/*
+       ibd-src/ibdprep.c
+Copyright: 1997-2010 Southwest Foundation for Biomedical Research
+License: ???
+
+Files: lib/solar.tcl
+Copyright: 1998-2014, Southwest Foundation for Biomedical Research
+           2011-present, Texas Biomedical Research Institute
+License: ???
+  All rights reserved.
+  .
+  The authors are John Blangero, Kenneth Lange, Laura Almasy, Harald Goring,
+  Jeff Williams, Tom Dyer, Michael Boehnke, and Charles Peterson.  Parts of
+  SOLAR consist of software developed by others; a complete list is provided
+  in Appendix Four of the documentation included with this package (use the
+  "doc" command to find out where that is).
+  .
+  Use of this program should be acknowledged in scientific publications.
+
+Files: extras/include/jama
+Copyright: MNIST & Mathworks
+License: public-domain
 
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
