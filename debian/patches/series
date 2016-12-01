@@ -2,3 +2,4 @@ up_build_fixes
 deb_library_paths
 deb_use_tcl8.5
 up_homo_blind_trust_to_fscanf
+up_stl_pair
