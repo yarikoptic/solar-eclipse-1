@@ -1,5 +1,5 @@
-solar (8.1.1+git0-g8f32b4b-1) UNRELEASED; urgency=low
+solar (8.1.1+git0-g8f32b4b-1) neurodebian; urgency=low
 
-  * Initial release (Closes: #nnnn)
+  * Initial test release within NeuroDebian repository, no active ITP
 
- -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 08 Feb 2016 13:35:07 -0500
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 30 Nov 2016 23:46:41 -0500
