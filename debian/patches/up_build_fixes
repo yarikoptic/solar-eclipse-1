@@ -7,7 +7,7 @@
 +TCLLIBS = -ltcl8.5
 --- /dev/null
 +++ b/Makefile
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,35 @@
 +ARCHMAKEFILE=Makefile.d64
 +INSTALLDIR=/usr/lib/solar
 +LIBSRCDIRS=lib extras/RicVolume/src extras/NemaVolume/src
@@ -23,18 +23,23 @@
 +
 +# Ultimate install rule which would respect DESTDIR
 +install: build
-+	install -d $(DESTDIR)/bin $(DESTDIR)/lib $(DESTDIR)/doc/
++	install -d $(DESTDIR)/usr/lib/solar/bin $(DESTDIR)/usr/lib/solar/lib $(DESTDIR)/usr/lib/solar/doc/
 +	set -e; for d in $(BINSRCDIRS); do make -C $$d install; done
-+	install -m 0644 -t $(DESTDIR)/lib/  lib/solar.tcl
-+	cd $(DESTDIR)/lib; echo 'auto_mkindex . solar.tcl' | tclsh8.5
-+	install -t $(DESTDIR)/bin extras/stringplotk extras/arrangeps.py
-+	cp -rp  debian/source/files/Example $(DESTDIR)/doc
++	install -m 0644 -t $(DESTDIR)/usr/lib/solar/lib/  lib/solar.tcl
++	cd $(DESTDIR)/usr/lib/solar/lib; echo 'auto_mkindex . solar.tcl' | tclsh8.5
++	install -t $(DESTDIR)/usr/lib/solar/bin extras/stringplotk extras/arrangeps.py
++	cp -rp  debian/source/files/Example $(DESTDIR)/usr/lib/solar/doc
 +
 +clean:
 +	-find -iname *.a -delete
 +	-for d in $(BINSRCDIRS) $(LIBSRCDIRS); do make -C $$d clean; done
 +	-rm src/Makefile
 +	-rm configure-stamp
++
++test:
++	set -e; td=$$(mktemp -d); cd $$td && \
++		{ echo " example ; load pedi gaw10.ped ; doanalysis" | solar; } && \
++		test "`awk '/H2r is/{print $$3;}' q4/polygenic.out`" = "0.5501787"
 +
 +.PHONY: build build-libs install configure clean
 +
@@ -45,7 +50,7 @@
  $(OBJS): 	$(HEADERS)
  
 +install:
-+		install -t $(DESTDIR)/bin $(PROGRAM)
++		install -t $(DESTDIR)/usr/lib/solar/bin $(PROGRAM)
 +
  clean:
  		rm -f $(OBJS)
