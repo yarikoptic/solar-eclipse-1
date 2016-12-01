@@ -1,16 +1,11 @@
 upstream
 
-   - for next releases -- could you please release source tarballs on NITRC including
-     version, not just solar_src.tar.gz, .e.g solar-8.1.1.tar.gz
    - solar or solar-eclipse -- what would be a preferable name to call
      the package?
    - do nifticdf and fslio needed??? I see binding but do not see
      headers included etc.  fslio is a tricky one since copy within
      nifticlib was never updated, and the one coming from FSL is under
      non-free license of FSL ATM, so can't be mixed with GPL'ed projects
-   - where libRicVolumed and libNemaVolumed come from?  really
-     couldn't find from google
-   - minor: some tabs within README.Making* making formatting uncertain
 
 debian:
    - if to use libfslio (from fsl-5.0-core?) would lead to

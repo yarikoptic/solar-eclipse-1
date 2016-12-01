@@ -7,18 +7,14 @@
 +TCLLIBS = -ltcl8.5
 --- /dev/null
 +++ b/Makefile
-@@ -0,0 +1,32 @@
+@@ -0,0 +1,29 @@
 +ARCHMAKEFILE=Makefile.d64
 +INSTALLDIR=/usr/lib/solar
++LIBSRCDIRS=lib extras/RicVolume/src extras/NemaVolume/src
 +BINSRCDIRS=ibd-src src extras/homo
 +
-+build: configure build-libs
-+	for d in $(BINSRCDIRS); do make -C $$d; done
-+
-+build-libs:
-+	make -C extras/RicVolume/src
-+	make -C extras/NemaVolume/src
-+	make -C lib
++build: configure
++	set -e; for d in $(LIBSRCDIRS) $(BINSRCDIRS); do make -C $$d; done
 +
 +configure: configure-stamp
 +
@@ -28,13 +24,14 @@
 +# Ultimate install rule which would respect DESTDIR
 +install: build
 +	install -d $(DESTDIR)/bin $(DESTDIR)/lib
-+	for d in $(BINSRCDIRS); do make -C $$d install; done
++	set -e; for d in $(BINSRCDIRS); do make -C $$d install; done
 +	install -m 0644 -t $(DESTDIR)/lib/  lib/solar.tcl
-+	cd $(DESTDIR)/lib; echo 'auto_mkindex . solar.tcl' | tclsh
++	cd $(DESTDIR)/lib; echo 'auto_mkindex . solar.tcl' | tclsh8.5
 +	install -t $(DESTDIR)/bin extras/stringplotk extras/arrangeps.py
 +
 +clean:
-+	-for d in $(BINSRCDIRS); do make -C $$d clean; done
++	-find -iname *.a -delete
++	-for d in $(BINSRCDIRS) $(LIBSRCDIRS); do make -C $$d clean; done
 +	-rm src/Makefile
 +	-rm configure-stamp
 +
