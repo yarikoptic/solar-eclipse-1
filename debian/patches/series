@@ -1,2 +1,3 @@
 up_build_fixes
 deb_library_paths
+deb_use_tcl8.5

@@ -1,5 +1,40 @@
 --- /dev/null
 +++ b/src/Makefile.common
-@@ -0,0 +1,2 @@
+@@ -0,0 +1,4 @@
 +EXTRACINCLUDES = -I../extras/RicVolume/src/ -I../extras/include -I/usr/include/eigen3/
 +EXTRALD = -L../extras/RicVolume/src -L../extras/NemaVolume/src -L/usr/lib/fsl/5.0/
++
++TCLLIBS = -ltcl8.5
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,30 @@
++ARCHMAKEFILE=Makefile.d64
++INSTALLDIR=/usr/lib/solar
++BINSRCDIRS=ibd-src src
++
++build: configure build-libs
++	for d in $(BINSRCDIRS); do make -C $$d; done
++
++build-libs:
++	make -C extras/RicVolume/src
++	make -C extras/NemaVolume/src
++	make -C lib
++
++configure: configure-stamp
++
++configure-stamp:
++	cd src; ln -sf $(ARCHMAKEFILE) Makefile
++
++# Ultimate install rule which would respect DESTDIR
++install: build
++	mkdir -p $(DESTDIR)/bin
++	for d in $(BINSRCDIRS); do make -C $$d install; done
++
++
++clean:
++	-for d in $(BINSRCDIRS); do make -C $$d clean; done
++	-rm src/Makefile
++	-rm configure-stamp
++
++.PHONY: build build-libs install configure clean
++
