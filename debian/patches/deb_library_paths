@@ -5,7 +5,86 @@
  CFLAGS = -m64 -O2 -I../lib -DUSE_SAFELIB -fexceptions
  LDFLAGS = -m64 -L../lib -lsafe -ltcl8.4 -L/usr/lib32 -lm -lc -lstdc++ -ldl -fexceptions -lRicVolume -lNemaVolume -lfslio -lniftiio -lnifticdf -lznz -lz
 -CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1
-+CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 -I/usr/include/eigen3/
++CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 
  CXXFLAGS = -O2
  
  # End of system specific definitions
+--- /dev/null
++++ b/extras/RicVolume/src/Makefile
+@@ -0,0 +1,17 @@
++INCLUDES=RicVolumeSet.h
++OBS=NiftiOrientConvert.o RicVolume.o RicVolumeSet.o
++
++CFLAGS       = -fPIC -g -I../../include
++CPPFLAGS     = $(CFLAGS)
++LDFLAGS      = -shared
++
++all: libRicVolume.a
++
++libRicVolume.so: $(INCLUDES) $(OBS)
++	$(CC) $(CFLAGS) $(OBS) -o $@ $(LDFLAGS)
++
++libRicVolume.a: $(INCLUDES) $(OBS)
++	ar -rc $@ $(OBS)
++
++clean:
++	rm -f $(OBS) *.so *.a
+--- /dev/null
++++ b/extras/NemaVolume/src/Makefile
+@@ -0,0 +1,17 @@
++INCLUDES=nemardr.cpp
++OBS=nemardr.o
++
++CFLAGS       = -fPIC -g -I../../include
++CPPFLAGS     = $(CFLAGS)
++LDFLAGS      = -shared
++
++all: libNemaVolume.a
++
++libNemaVolume.so: $(INCLUDES) $(OBS)
++	$(CC) $(CFLAGS) $(OBS) -o $@ $(LDFLAGS)
++
++libNemaVolume.a: $(INCLUDES) $(OBS)
++	ar -rc $@ $(OBS)
++
++clean:
++	rm -f $(OBS) *.so *.ac
+--- a/src/Makefile.d64
++++ b/src/Makefile.d64
+@@ -1,3 +1,5 @@
++include ./Makefile.common
++
+ all:	solarmain
+ 
+ # gcc linux
+@@ -8,8 +10,8 @@ CXX=g++
+ 
+ FFLAGS = -m64 -O2 -fno-second-underscore -fexceptions
+ CFLAGS = -m64 -O2 -I../lib -DUSE_SAFELIB -fexceptions
+-LDFLAGS = -m64 -L../lib -lsafe -ltcl8.4 -L/usr/lib32 -lm -lc -lstdc++ -ldl -fexceptions -lRicVolume -lNemaVolume -lfslio -lniftiio -lnifticdf -lznz -lz
+-CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 -DLINUX64
++LDFLAGS = -m64 -L../lib -lsafe -ltcl8.4 -L/usr/lib32 -lm -lc -lstdc++ -ldl -fexceptions $(EXTRALD) -lRicVolume -lNemaVolume  -lniftiio -lnifticdf -lznz -lz
++CPPFLAGS = -m64 -I../lib -I../include -DUSE_SAFELIB -fexceptions -DTR1 -DLINUX64 $(EXTRACINCLUDES)
+ CXXFLAGS = -O2
+ 
+ # End of system specific definitions
+@@ -174,7 +176,7 @@ solarmain: $(INCLUDES) $(OBS) $(FOBS)
+ 	$(FC) -o solarmain $(OBS) $(FOBS) $(LDFLAGS)
+ 
+ install:
+-	/usr/sbin/install -f ../bin -o solarmain
++	install -t $(DESTDIR)/bin solarmain
+ 
+ 
+ ecalc:	ecalc.o expression.o token.o scan.o function.o
+--- a/ibd-src/Makefile
++++ b/ibd-src/Makefile
+@@ -12,7 +12,7 @@ LDFLAGS = -static -s -O2
+ NOVECTOR = 
+ SUNMATH =
+ INSTALLER = cp
+-INSTALLER2 = ../bin
++INSTALLER2 = $(DESTDIR)/bin
+ 
+ ibdprep: ibdprep.o
+ 	$(CC) $(LDFLAGS) -o ibdprep ibdprep.o -L../lib -lsafe -lm
