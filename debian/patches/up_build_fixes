@@ -7,10 +7,10 @@
 +TCLLIBS = -ltcl8.5
 --- /dev/null
 +++ b/Makefile
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,32 @@
 +ARCHMAKEFILE=Makefile.d64
 +INSTALLDIR=/usr/lib/solar
-+BINSRCDIRS=ibd-src src
++BINSRCDIRS=ibd-src src extras/homo
 +
 +build: configure build-libs
 +	for d in $(BINSRCDIRS); do make -C $$d; done
@@ -27,9 +27,11 @@
 +
 +# Ultimate install rule which would respect DESTDIR
 +install: build
-+	mkdir -p $(DESTDIR)/bin
++	install -d $(DESTDIR)/bin $(DESTDIR)/lib
 +	for d in $(BINSRCDIRS); do make -C $$d install; done
-+
++	install -m 0644 -t $(DESTDIR)/lib/  lib/solar.tcl
++	cd $(DESTDIR)/lib; echo 'auto_mkindex . solar.tcl' | tclsh
++	install -t $(DESTDIR)/bin extras/stringplotk extras/arrangeps.py
 +
 +clean:
 +	-for d in $(BINSRCDIRS); do make -C $$d clean; done
@@ -38,3 +40,15 @@
 +
 +.PHONY: build build-libs install configure clean
 +
+--- a/extras/homo/Makefile
++++ b/extras/homo/Makefile
+@@ -25,6 +25,9 @@ $(PROGRAM): 	$(OBJS)
+ 
+ $(OBJS): 	$(HEADERS)
+ 
++install:
++		install -t $(DESTDIR)/bin $(PROGRAM)
++
+ clean:
+ 		rm -f $(OBJS)
+ 		@echo "clean"

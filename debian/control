@@ -13,7 +13,11 @@ Homepage: http://solar-eclipse-genetics.org/
 
 Package: solar
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+ ${shlibs:Depends}, ${misc:Depends},
+ tcl8.5,
+Recommends:
+ python,
 Description: genetic variance components analysis software
  SOLAR-Eclipse is an extensive, flexible software package for genetic
  variance components analysis, including linkage analysis, quantitative genetic
@@ -25,3 +29,4 @@ Description: genetic variance components analysis software
  dominance effects, household effects, and interactions. Additional features
  include functionality for mega and meta-genetic analyses where data from
  diverse cohorts can be pooled to improve statistical significance.
+

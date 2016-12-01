@@ -1,0 +1,14 @@
+--- a/src/solar.cc
++++ b/src/solar.cc
+@@ -54,9 +54,9 @@ if {-1 == [lsearch [array names env] SOL
+ } \n\
+ global auto_path \n\
+ if {[key -is-key-on-command-line?]} { \n\
+-    set auto_path [list . $DEFAULT_LIB $DEFAULT_LIB/tcl8.4] \n\
++    set auto_path [list . $DEFAULT_LIB $DEFAULT_LIB/tcl8.5] \n\
+ } else { \n\
+-    set auto_path [list . ~/lib $DEFAULT_LIB $DEFAULT_LIB/tcl8.4] \n\
++    set auto_path [list . ~/lib $DEFAULT_LIB $DEFAULT_LIB/tcl8.5] \n\
+ } \n\
+ set found 0 \n\
+ # Messages are now appended to a global and printed later \n\
